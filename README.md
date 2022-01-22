@@ -55,7 +55,7 @@ The reason why I said MFCCs is a lower resolution and noise-free version of Mel 
 
 ## 3. Data Augmentation
 So the result above is quite bad and it can't be used in real life. I guess that Data Augmentation would help improve the outcome
-As I said in the [1. Cough mechanism](#1-Cough-mechanism)
+As I said in the [Cough mechanism](#1-Cough-mechanism)
 Methods:
 
 * Time Shift
