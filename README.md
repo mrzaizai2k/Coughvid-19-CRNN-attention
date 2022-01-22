@@ -9,15 +9,14 @@ You may find the advantages of the Covid classification system based on cough so
 ## Table of contents
 * [1. Cough mechanism](#1-Cough-mechanism)
 * [2. Primary features](#2-Primary-features)
-* [3. Scaling data](#3-Scaling-data)
-* [4. Imbalanced data](#4-Imbalanced-data)
-* [5. Model](#5-Model)
+* [3. Data augmentation](#4-Data-augmentation)
+* [4. Model](#4-Model)
 * [6. K - fold cross validation](#6-K-fold-cross-validation)
 * [7. Result](#7-Result)
 
 ## 1. Cough mechanism
 I won't talk much about this part cause you can have detail information in `Mechanism of cough.pptx` and this [Cough sound analysis and objective correlation with spirometry and clinical diagnosis](https://www.researchgate.net/publication/340025267_Cough_sound_analysis_and_objective_correlation_with_spirometry_and_clinical_diagnosis). To sum up, different diseases create different coungh sounds. And those sounds are different with:
-* The enery of cough sequence, 
+* The energy of cough sequence
 * The energy distribution between cough bouts 
 * The sound of breath
 * The duration of the coough or breath 
@@ -31,7 +30,44 @@ So I discovered the author of the dataset of **my last Git [COVID-19-Cough-Class
 **From the base knowledge, I decided to use CRNN (Because of it's outperformance inn dealing with series data) and preprocess features in a different way**
 
 ## 2. Primary features
-The feature extracted in this project were MFCCs, Mel frequency spectrogram, chroma and those are mean value `np.mean`. 
 
-<p align="center"><img src="result/oversamp_AUC.PNG" width="500"></p>
-<p align="center"><i>Figure 4. AUC = 93% with SMOTE </i></p>
+I will extract 2D features like:
+
+* Mel-frequency Spectrogram
+* Chroma
+
+And then combine them into image to feed into the model. I may add 1D features and mean them through time (not mean them on the whole audio like phase 1):
+
+* MFCCs (I think it's a lower resolution and noise-free version of Mel spectrogram)
+* Spectral Centroid
+* Spectral Bandwidth
+* Spectral Roll-off
+* ZCR + energy
+
+Finally, I concatenated all of those features into one image like this below:
+
+<p align="center"><img src="result/Features data.png" width="500"></p>
+<p align="center"><i>Figure 1. Features data </i></p>
+
+I'd want to go through the Mel-frequency Spectrogram and MFCCs in further detail. A sound is just a collection of waveforms with varying **Amplitude** and **Frequency**. Ah, it sounds familiar, don't it?  Yes Fourier Transform. So we utilize Fourier to encode a sound wave into a picture, which is a Mel-frequency Spectrogram with frequency as the vertical axis, time as the horizontal axis, and magnitude as the sample value associated with each time and frequency coordinate, and yes, we can restore any sound with that image.
+
+The reason why I said MFCCs is a lower resolution and noise-free version of Mel spectrogram is that from the Mel-spectrogram we can remove parts of the frequency and retain a range of frequency that seems to carry important information (That's how we remove noise = high frequency)
+
+## 3. Data Augmentation
+So the result above is quite bad and it can't be used in real life. I guess that Data Augmentation would help improve the outcome
+As I said in the [1. Cough mechanism](#1-Cough-mechanism)
+Methods:
+
+* Time Shift
+* Adding background noise
+* Stretching the sound (just a little bit)
+* Changing Gain
+
+I try not to generate fake sounds that rarely happen in real life, and distort the sound so much. So I don't recommend
+
+* Time stretch (too much)
+* Mix up
+
+Note: You have to use data augmentation on just the train and valid set
+
+## 4. Model
