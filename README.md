@@ -9,8 +9,8 @@ You may find the advantages of the Covid classification system based on cough so
 ## Table of contents
 * [1. Cough mechanism](#1-Cough-mechanism)
 * [2. Primary features](#2-Primary-features)
-* [3. Data augmentation](#4-Data-augmentation)
-* [4. Model](#4-Model)
+* [3. Model](#3-Model)
+* [4. Data augmentation](#-Data-augmentation)
 * [6. K - fold cross validation](#6-K-fold-cross-validation)
 * [7. Result](#7-Result)
 
@@ -53,7 +53,20 @@ I'd want to go through the Mel-frequency Spectrogram and MFCCs in further detail
 
 The reason why I said MFCCs is a lower resolution and noise-free version of Mel spectrogram is that from the Mel-spectrogram we can remove parts of the frequency and retain a range of frequency that seems to carry important information (That's how we remove noise = high frequency)
 
-## 3. Data Augmentation
+## 3. Model
+
+</p> <p align="center"><img src="result/model.png" width="700"></p>
+</p> <p align="center"><i>Figure 1. Model Structure </i></p>
+
+The [Features images](#2-Primary-features) are then normalized, resized, padding and transposed  before being fed into the model
+
+The four main stages of the model:
+* CNN: extract image features (I use CNN of VGG16 with 7 interlaced connected layers of Convolutional, Max pooling and Batch normalization )
+* Bi-LSTM: work so well with sequence data. Overcome the RNN drawbacks (vanishing or exploding gradient). The prefix "Bi" stands for "BiDirectional," which indicates that the model can update the current information using both prior and subsequent information.
+* Attention: Note that even LSTM struggles with information that appears to be far away. [Attention](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html) is here to help
+* Fully - connected layer: to classify the matrix of the LSTM output into 2 classes (covid and non-covid)
+
+## 4. Data Augmentation
 
 As I said in the [Cough mechanism](#1-Cough-mechanism).There are several elements that might influence the outcome. As a result, using MIX UP (Cut the cough sequeces of several people and then randomly connect them) or SMOTE like phase 1 to deal with the data imbalanced problem isn't a good idea. Cause they will create fake data that may never exist in real life and that doesn't help at all.
 
@@ -64,8 +77,9 @@ Methods that I :
 * Stretching the sound (just a little bit)
 * Changing Gain
 
-Note: You have to use data augmentation on just the train and valid set, not the test set
-AUC increase from 0.67 to 0.69 after using Data Augmentation
+**Note:** You have to use data augmentation on just the train and valid set, not the test set
+
+**AUC increase from 0.67 to 0.69 after using Data Augmentation**
 
 </p> <p align="center"><img src="result/AUC on original data.png" width="400"></p>
 </p> <p align="center"><i>Figure 1. AUC on original data </i></p>
@@ -74,4 +88,4 @@ AUC increase from 0.67 to 0.69 after using Data Augmentation
 <p align="center"><i>Figure 1. AUC on augmented data </i>
   
 
-## 4. Model
+
