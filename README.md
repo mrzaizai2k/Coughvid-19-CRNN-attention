@@ -11,8 +11,9 @@ You may find the advantages of the Covid classification system based on cough so
 * [2. Primary features](#2-Primary-features)
 * [3. Model](#3-Model)
 * [4. Data augmentation](#-Data-augmentation)
-* [6. K - fold cross validation](#6-K-fold-cross-validation)
-* [7. Result](#7-Result)
+* [5. Result](#5-Result)
+* [6. Conclusions](#6-Conclusions)
+
 
 ## 1. Cough mechanism
 I won't talk much about this part cause you can have detail information in `Mechanism of cough.pptx` and this [Cough sound analysis and objective correlation with spirometry and clinical diagnosis](https://www.researchgate.net/publication/340025267_Cough_sound_analysis_and_objective_correlation_with_spirometry_and_clinical_diagnosis). To sum up, different diseases create different coungh sounds. And those sounds are different with:
@@ -56,7 +57,7 @@ The reason why I said MFCCs is a lower resolution and noise-free version of Mel 
 ## 3. Model
 
 </p> <p align="center"><img src="result/model.png" width="700"></p>
-</p> <p align="center"><i>Figure 1. Model Structure </i></p>
+</p> <p align="center"><i>Figure 2. Model Structure </i></p>
 
 The [Features images](#2-Primary-features) are then normalized, resized, padding and transposed  before being fed into the model
 
@@ -66,7 +67,7 @@ The four main stages of the model:
 * Attention: Note that even LSTM struggles with information that appears to be far away. [Attention](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html) is here to help
 * Fully - connected layer: to classify the matrix of the LSTM output into 2 classes (covid and non-covid)
 
-## 4. Data Augmentation
+## 4. Data augmentation
 
 As I said in the [Cough mechanism](#1-Cough-mechanism).There are several elements that might influence the outcome. As a result, using MIX UP (Cut the cough sequeces of several people and then randomly connect them) or SMOTE like phase 1 to deal with the data imbalanced problem isn't a good idea. Cause they will create fake data that may never exist in real life and that doesn't help at all.
 
@@ -82,10 +83,17 @@ Methods that I :
 **AUC increase from 0.67 to 0.69 after using Data Augmentation**
 
 </p> <p align="center"><img src="result/AUC on original data.png" width="400"></p>
-</p> <p align="center"><i>Figure 1. AUC on original data </i></p>
+</p> <p align="center"><i>Figure 3. AUC on original data </i></p>
 
-<p align="center"><img src="result/AUC on augmented data.png" width="400">
-<p align="center"><i>Figure 1. AUC on augmented data </i>
-  
 
+</p> <p align="center"><img src="result/AUC on augmented data.png" width="400"></p>
+</p> <p align="center"><i>Figure 4. AUC on augmented data </i></p>
+ 
+## 5. Result
+
+See more in `coughvid-19-crnn-attention.ipynb`
+
+## 6. Conclusions
+I think the background hypothesis for this project is good but it still have bad result. I wish I have had more time cause I was working on my thesis too. Here are some of my thoughts for you guys to try on
+* I think MFCCs and Melspectrogram are a little bit the 
 
