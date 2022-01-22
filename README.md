@@ -1,5 +1,5 @@
 # Coughvid-19-CRNN-attention
-**For Vietnamese student, you can read the `Nhận diện covid qua tiếng ho.pdf` and `Covid19_slide.pdf` which is written in Vietnamese. For foreign reader, I wrote all the important information in `coughvid-19-crnn-attention.ipynb`, `Mechanism of cough.pptx`, and my Git Repo [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**
+**For Vietnamese students, you can read the `Nhận diện covid qua tiếng ho.pdf` and `Covid19_slide.pdf` that are written in Vietnamese. For foreign readers, I wrote all the important information in `coughvid-19-crnn-attention.ipynb`, `Mechanism of cough.pptx`, and my last Git Repo [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**
 
 The Kaggle notebook: https://www.kaggle.com/bomaich/coughvid-19-crnn-attention
 
@@ -63,7 +63,7 @@ The [Features images](#2-Primary-features) are then normalized, resized, padding
 
 The four main stages of the model:
 * CNN: extract image features (I use CNN of VGG16 with 7 interlaced connected layers of Convolutional, Max pooling and Batch normalization )
-* Bi-LSTM: work so well with sequence data. Overcome the RNN drawbacks (vanishing or exploding gradient). The prefix "Bi" stands for "BiDirectional," which indicates that the model can update the current information using both prior and subsequent information.
+* Bi-LSTM: work so well with sequence data. Overcome the RNN drawbacks (vanishing or exploding gradient). The prefix "Bi" stands for "BiDirectional" which indicates that the model can update the current information using both prior and subsequent information.
 * Attention: Note that even LSTM struggles with information that appears to be far away. [Attention](https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html) is here to help
 * Fully - connected layer: to classify the matrix of the LSTM output into 2 classes (covid and non-covid)
 
@@ -94,6 +94,9 @@ Methods that I :
 See more in `coughvid-19-crnn-attention.ipynb`
 
 ## 6. Conclusions
-I think the background hypothesis for this project is good but it still have bad result. I wish I have had more time cause I was working on my thesis too. Here are some of my thoughts for you guys to try on
-* I think MFCCs and Melspectrogram are a little bit the 
-
+I believe the project's basic theory is reasonable, however the results are disappointing. I wish I have had more time cause I was working on my thesis too. Here are some of my ideas for you guys to try on
+* I believe MFCCs and Mel-spectrograms are similar in certain ways. . I guess we can just use MFCCs
+* I used MFCCs to remove noise before adding noise for data augmentation?? Furthermore, Attention can not properly work with noise. Furthermore, Attention is unable to function well in the presence of noise according to [Joint CTC - Attention based end to end speech recognition using multi - task learning](https://arxiv.org/abs/1609.06773). So, I believe we can remove gauss noise from data augmentation while still achieving the same, if not better, results. However, depending on your definition of noise, may be we can add different sounds (fan, conversation, car engine, etc.) to the mix.
+* Yes! I need more data. Obviously, 1369 files is not enough
+* Combine with other common symtoms like fever...
+* Using other features to find out if they're related to the cough sound
