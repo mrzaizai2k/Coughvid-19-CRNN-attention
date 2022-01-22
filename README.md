@@ -71,7 +71,7 @@ The four main stages of the model:
 
 As I said in the [Cough mechanism](#1-Cough-mechanism).There are several elements that might influence the outcome. As a result, using MIX UP (Cut the cough sequeces of several people and then randomly connect them) or SMOTE like phase 1 to deal with the data imbalanced problem isn't a good idea. Cause they will create fake data that may never exist in real life and that doesn't help at all.
 
-Methods that I :
+Methods that I used:
 
 * Time Shift
 * Adding background noise
