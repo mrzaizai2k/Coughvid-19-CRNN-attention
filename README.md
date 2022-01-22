@@ -54,20 +54,24 @@ I'd want to go through the Mel-frequency Spectrogram and MFCCs in further detail
 The reason why I said MFCCs is a lower resolution and noise-free version of Mel spectrogram is that from the Mel-spectrogram we can remove parts of the frequency and retain a range of frequency that seems to carry important information (That's how we remove noise = high frequency)
 
 ## 3. Data Augmentation
-So the result above is quite bad and it can't be used in real life. I guess that Data Augmentation would help improve the outcome
-As I said in the [Cough mechanism](#1-Cough-mechanism)
-Methods:
+
+As I said in the [Cough mechanism](#1-Cough-mechanism).There are several elements that might influence the outcome. As a result, using MIX UP (Cut the cough sequeces of several people and then randomly connect them) or SMOTE like phase 1 to deal with the data imbalanced problem isn't a good idea. Cause they will create fake data that may never exist in real life and that doesn't help at all.
+
+Methods that I :
 
 * Time Shift
 * Adding background noise
 * Stretching the sound (just a little bit)
 * Changing Gain
 
-I try not to generate fake sounds that rarely happen in real life, and distort the sound so much. So I don't recommend
+Note: You have to use data augmentation on just the train and valid set, not the test set
+AUC increase from 0.67 to 0.69 after using Data Augmentation
 
-* Time stretch (too much)
-* Mix up
+</p> <p align="center"><img src="result/AUC on original data.png" width="400"></p>
+</p> <p align="center"><i>Figure 1. AUC on original data </i></p>
 
-Note: You have to use data augmentation on just the train and valid set
+<p align="center"><img src="result/AUC on augmented data.png" width="400">
+<p align="center"><i>Figure 1. AUC on augmented data </i>
+  
 
 ## 4. Model
