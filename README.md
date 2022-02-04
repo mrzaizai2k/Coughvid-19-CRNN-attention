@@ -1,9 +1,8 @@
 # Coughvid-19-CRNN-attention
 **For Vietnamese students, you can read the `Nhận diện covid qua tiếng ho.pdf` and `Covid19_slide.pdf` that are written in Vietnamese. For foreign readers, I wrote all the important information in `coughvid-19-crnn-attention.ipynb`, `Mechanism of cough.pptx`, and my last Git Repo [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**
 
-The Kaggle notebook: https://www.kaggle.com/bomaich/coughvid-19-crnn-attention
-
-Cough sound in different diseases & Covid19 classification with CRNN (Youtube): https://youtu.be/r1xkyvSUIaw
+* The Kaggle notebook: https://www.kaggle.com/bomaich/coughvid-19-crnn-attention
+* Cough sound in different diseases & Covid19 classification with CRNN (Youtube): https://youtu.be/r1xkyvSUIaw
 
 You may find the advantages of the Covid classification system based on cough sound, the background technique like scaling, K-fold... or the way I implemented it in **my Git  [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**. But the last git has some huge flaws due to the lack of experiences about cough or I have to depend much on the processed dataset (not sound files). In this Git, I recommend reading this Git in conjunction with `coughvid-19-crnn-attention.ipynb`  
 
