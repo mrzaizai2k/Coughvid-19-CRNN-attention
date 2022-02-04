@@ -3,6 +3,8 @@
 
 The Kaggle notebook: https://www.kaggle.com/bomaich/coughvid-19-crnn-attention
 
+Cough sound in different diseases & Covid19 classification with CRNN (Youtube): https://youtu.be/r1xkyvSUIaw
+
 You may find the advantages of the Covid classification system based on cough sound, the background technique like scaling, K-fold... or the way I implemented it in **my Git  [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**. But the last git has some huge flaws due to the lack of experiences about cough or I have to depend much on the processed dataset (not sound files). In this Git, I recommend reading this Git in conjunction with `coughvid-19-crnn-attention.ipynb`  
 
 
