@@ -1,4 +1,8 @@
 # Coughvid-19-CRNN-attention
+Check out my 2 YOUTUBE channels for more:
+1. [Mrzaizai2k - AI](https://www.youtube.com/channel/UCFGCVG0P2eLS5jkDaE0vSfA) (NEW)
+2. [Mrzaizai2k](https://www.youtube.com/channel/UCCq3lQ1W437euT9eq2_26HQ) (old)
+
 **For Vietnamese students, you can read the `Nhận diện covid qua tiếng ho.pdf` and `Covid19_slide.pdf` that are written in Vietnamese. For foreign readers, I wrote all the important information in `coughvid-19-crnn-attention.ipynb`, `Mechanism of cough.pptx`, and my last Git Repo [COVID-19-Cough-Classification-phase-1](https://github.com/mrzaizai2k/COVID-19-Cough-Classification-phase-1-#covid-19-cough-classification-phase-1)**
 
 * The Kaggle notebook: https://www.kaggle.com/bomaich/coughvid-19-crnn-attention
